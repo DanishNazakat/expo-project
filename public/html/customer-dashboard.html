@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Dashboard</title>
+<style>
+    :root {
+        --primary-color: #2ecc71;
+        --secondary-color: #27ae60;
+        --card-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        --card-hover-shadow: 0 25px 60px rgba(0,0,0,0.3);
+        --bg-gradient: linear-gradient(135deg, #f5f7fa, #e8f5e8);
+        --text-color: #333;
+        --border-radius: 20px;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+        background: var(--bg-gradient);
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(circle at 20% 80%, rgba(46, 204, 113, 0.1) 0%, transparent 50%),
+                          radial-gradient(circle at 80% 20%, rgba(39, 174, 96, 0.1) 0%, transparent 50%);
+        animation: float 15s ease-in-out infinite;
+        z-index: -1;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+
+    header {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 30px 0;
+        text-align: center;
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        position: relative;
+        z-index: 1;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding: 60px 20px;
+        gap: 50px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .card {
+        background: white;
+        border-radius: var(--border-radius);
+        box-shadow: var(--card-shadow);
+        width: 380px;
+        padding: 35px 30px;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+
+    .card:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: var(--card-hover-shadow);
+    }
+
+    .card h3 {
+        text-align: center;
+        color: var(--primary-color);
+        margin-bottom: 30px;
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+
+    .vehicle-images {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 25px;
+    }
+
+    .vehicle-images img {
+        width: 130px;
+        height: 130px;
+        border-radius: 15px;
+        object-fit: cover;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        border: 2px solid transparent;
+    }
+
+    .vehicle-images img:hover {
+        transform: scale(1.1);
+        box-shadow: 0 10px 30px rgba(46,204,113,0.3);
+        border-color: var(--primary-color);
+    }
+
+    .vehicle-images img:focus {
+        outline: none;
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 0 3px rgba(46,204,113,0.2);
+    }
+
+    @media(max-width: 900px){
+        .container {
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            gap: 30px;
+        }
+
+        .card {
+            width: 95%;
+            padding: 30px 25px;
+        }
+
+        .vehicle-images img {
+            width: 110px;
+            height: 110px;
+        }
+
+        header {
+            font-size: 28px;
+            padding: 25px 0;
+        }
+    }
+</style>
+</head>
+<body>
+
+<header>Customer Dashboard</header>
+
+<div class="container">
+
+    <!-- Book Passengers Vehicle Card -->
+    <div class="card" onclick="goToPassenger()">
+        <h3>Book Passengers Vehicle</h3>
+        <div class="vehicle-images">
+            <img src="../assets/download.jpg" alt="Bus" title="Bus">
+            <img src="../assets/download (2).jpg" alt="Coaster" title="Coaster">
+            <img src="../assets/171-1710031_innova-van-minivan-toyota-hiace-png-free-photo-removebg-preview.png" alt="Hiace" title="Hiace">
+        </div>
+    </div>
+
+    <!-- Book Load Vehicle Card -->
+    <div class="card" onclick="goToLoad()">
+        <h3>Book Load Vehicle</h3>
+        <div class="vehicle-images">
+            <img src="../assets/white-box-truck-half-side-view-isolated-white-background_373676-1597.avif" alt="Truck" title="mazda">
+            <img src="../assets/95_1_82821.jpg" alt="Container Truck" title="shehzore">
+            <img src="../assets/download (3).jpg" alt="Pickup Truck" title="22 wheeler">
+        </div>
+    </div>
+
+</div>
+<script>
+    function goToPassenger() {
+        window.location.href = "./passenger-vehicle.html";
+    }
+
+    function goToLoad() {
+        window.location.href = "./load-vehicle.html";
+    }
+</script>
+</body>
+</html>
